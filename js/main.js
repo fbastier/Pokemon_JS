@@ -5,13 +5,9 @@ function Premier(pkm1, pkm2) {
     let val = Math.random();
     if (val < 0.5) {
         console.log("Le tirage au sort a décidé que " + pkm1.getName() + " attaquait en premier.");
-        // console.log(pkm1.getName());
-        // console.log(val);
         return pkm1;
     } else { 
         console.log("Le tirage au sort a décidé que " + pkm2.getName() + " attaquait en premier.");
-        // console.log(pkm2.getName());
-        // console.log(val);
         return pkm2;
     }
 } 
@@ -20,7 +16,7 @@ function affichagePoints(pkm) {
     console.log(pkm.getName() + " a " + pkm.getLifePoints() + " points de vie");
 }
 
-
+// Instanciation des objets Pikachu et Evoli
 let Pikachu = new Pokemon("Pikachu", 025, 40, 6,"Electric", 82, "statik", 10, "paratonnerre", 25);
 let Evoli = new Pokemon("Evoli", 133, 30, 6.5, "Normal", 70, "adaptabilite", 9, "anticipation", 15);
 
@@ -38,15 +34,12 @@ console.log("____________________________________________");
 
 console.log("____________________________________________");
 
-//POINTPIKACHU = Pikachu.getLifePoints();
-//POINTEVOLI = Evoli.getLifePoints();
-
 
 while (premier.getLifePoints() > 0 && second.getLifePoints() > 0 ) {
     let pVal = premier.attaque(second);
     let firstString = premier.getName() + " a attaqué. Il a fait " + pVal + " de dégâts. ";
     //console.log("####" + premier.getLifePoints());
-    if(second.getLifePoints() < 0) {
+    if (second.getLifePoints() < 0) {
         console.log( firstString); 
     } else {
         let sVal = second.attaque(premier);
@@ -56,8 +49,14 @@ while (premier.getLifePoints() > 0 && second.getLifePoints() > 0 ) {
     
 }
 
+let gagnant;
 if (premier.getLifePoints() > 0) {
-    console.log(premier.getName() + " a gagné le combat. Il lui reste " + premier.getLifePoints() + " points.");
+    gagnant = premier;
 } else {
-    console.log(second.getName() + " a gagné le combat. Il lui reste " + second.getLifePoints() + " points.");
+    gagnant = second;
 }
+console.log(gagnant.getName() + " a gagné le combat. Il lui restait " + gagnant.getLifePoints() + " points de vie.");
+
+
+//console.log(premier.getName() + " a gagné le combat. Il lui restait " + premier.getLifePoints() + " points de vie.");
+//console.log(second.getName() + " a gagné le combat. Il lui restait " + second.getLifePoints() + " points de vie.");
